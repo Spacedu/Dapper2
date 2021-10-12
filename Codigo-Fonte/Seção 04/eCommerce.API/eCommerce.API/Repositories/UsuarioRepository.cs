@@ -37,8 +37,9 @@ namespace eCommerce.API.Repositories
 
         public void Update(Usuario usuario)
         {
-            _db.Remove(_db.FirstOrDefault(a => a.Id == usuario.Id));
-            _db.Add(usuario);
+            string sql = "UPDATE Usuarios SET Nome = @Nome, Email = @Email, Sexo = @Sexo, RG = @RG, CPF = @CPF, NomeMae = @NomeMae, SituacaoCadastro = @SituacaoCadastro, DataCadastro = @DataCadastro WHERE Id = @Id";
+
+            _connection.Execute(sql, usuario);
         }
 
         public void Delete(int id)
