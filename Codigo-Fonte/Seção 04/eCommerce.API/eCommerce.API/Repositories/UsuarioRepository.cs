@@ -30,18 +30,9 @@ namespace eCommerce.API.Repositories
 
         public void Insert(Usuario usuario)
         {
-            var ultimoUsuario = _db.LastOrDefault();
+            string sql = "INSERT INTO Usuarios(Nome, Email, Sexo, RG, CPF, NomeMae, SituacaoCadastro, DataCadastro) VALUES (@Nome, @Email, @Sexo, @RG, @CPF, @NomeMae, @SituacaoCadastro, @DataCadastro); SELECT CAST(SCOPE_IDENTITY() AS INT);";
 
-            if(ultimoUsuario == null)
-            {
-                usuario.Id = 1;
-            }
-            else
-            {
-                usuario.Id = ultimoUsuario.Id;
-                usuario.Id++;
-            }
-            _db.Add(usuario);
+            usuario.Id = _connection.Query<int>(sql, usuario).Single();
         }
 
         public void Update(Usuario usuario)
