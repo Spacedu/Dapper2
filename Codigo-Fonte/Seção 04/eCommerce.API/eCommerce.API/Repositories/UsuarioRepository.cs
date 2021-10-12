@@ -25,7 +25,15 @@ namespace eCommerce.API.Repositories
 
         public Usuario Get(int id)
         {
-            return _connection.QuerySingleOrDefault<Usuario>("SELECT * FROM Usuarios WHERE Id = @Id", new { Id = id });
+            return _connection.Query<Usuario, Contato, Usuario>(
+                "SELECT * FROM Usuarios as U LEFT JOIN Contatos C ON C.UsuarioId = U.Id WHERE U.Id = @Id",
+                (usuario, contato) =>
+                {
+                    usuario.Contato = contato;
+                    return usuario;
+                },
+                new { Id = id }
+            ).SingleOrDefault();
         }
 
         public void Insert(Usuario usuario)
