@@ -25,7 +25,7 @@ namespace eCommerce.API.Repositories
 
         public Usuario Get(int id)
         {
-            return _db.FirstOrDefault(a => a.Id == id);
+            return _connection.QuerySingleOrDefault<Usuario>("SELECT * FROM Usuarios WHERE Id = @Id", new { Id = id });
         }
 
         public void Insert(Usuario usuario)
