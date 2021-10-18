@@ -20,7 +20,30 @@ namespace eCommerce.API.Repositories
         //ADO.NET > Dapper: Micro-ORM (MER <-> POO)
         public List<Usuario> Get()
         {
-            return _connection.Query<Usuario>("SELECT * FROM Usuarios").ToList();
+            //return _connection.Query<Usuario>("SELECT * FROM Usuarios").ToList();
+            List<Usuario> usuarios = new List<Usuario>();
+
+            string sql = "SELECT * FROM Usuarios as U LEFT JOIN Contatos C ON C.UsuarioId = U.Id LEFT JOIN EnderecosEntrega EE ON EE.UsuarioId = U.Id";
+
+            _connection.Query<Usuario, Contato, EnderecoEntrega, Usuario>(sql, 
+                (usuario, contato, enderecoEntrega) => {
+
+                    if( usuarios.SingleOrDefault(a => a.Id == usuario.Id) == null)
+                    {
+                        usuario.EnderecosEntrega = new List<EnderecoEntrega>();
+                        usuario.Contato = contato;
+                        usuarios.Add(usuario);
+                    }
+                    else
+                    {
+                        usuario = usuarios.SingleOrDefault(a => a.Id == usuario.Id);
+                    }
+
+                    usuario.EnderecosEntrega.Add(enderecoEntrega);
+                    return usuario;
+                });
+
+            return usuarios;
         }
 
         public Usuario Get(int id)
