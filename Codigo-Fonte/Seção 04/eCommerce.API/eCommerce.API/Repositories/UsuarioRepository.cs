@@ -22,7 +22,6 @@ namespace eCommerce.API.Repositories
         {
             //return _connection.Query<Usuario>("SELECT * FROM Usuarios").ToList();
             List<Usuario> usuarios = new List<Usuario>();
-
             string sql = "SELECT * FROM Usuarios as U LEFT JOIN Contatos C ON C.UsuarioId = U.Id LEFT JOIN EnderecosEntrega EE ON EE.UsuarioId = U.Id";
 
             _connection.Query<Usuario, Contato, EnderecoEntrega, Usuario>(sql, 
@@ -48,15 +47,28 @@ namespace eCommerce.API.Repositories
 
         public Usuario Get(int id)
         {
-            return _connection.Query<Usuario, Contato, Usuario>(
-                "SELECT * FROM Usuarios as U LEFT JOIN Contatos C ON C.UsuarioId = U.Id WHERE U.Id = @Id",
-                (usuario, contato) =>
-                {
-                    usuario.Contato = contato;
+            List<Usuario> usuarios = new List<Usuario>();
+            string sql = "SELECT * FROM Usuarios as U LEFT JOIN Contatos C ON C.UsuarioId = U.Id LEFT JOIN EnderecosEntrega EE ON EE.UsuarioId = U.Id WHERE U.Id = @Id";
+
+            _connection.Query<Usuario, Contato, EnderecoEntrega, Usuario>(sql,
+                (usuario, contato, enderecoEntrega) => {
+
+                    if (usuarios.SingleOrDefault(a => a.Id == usuario.Id) == null)
+                    {
+                        usuario.EnderecosEntrega = new List<EnderecoEntrega>();
+                        usuario.Contato = contato;
+                        usuarios.Add(usuario);
+                    }
+                    else
+                    {
+                        usuario = usuarios.SingleOrDefault(a => a.Id == usuario.Id);
+                    }
+
+                    usuario.EnderecosEntrega.Add(enderecoEntrega);
                     return usuario;
-                },
-                new { Id = id }
-            ).SingleOrDefault();
+                }, new { Id = id });
+
+            return usuarios.SingleOrDefault();
         }
 
         public void Insert(Usuario usuario)
