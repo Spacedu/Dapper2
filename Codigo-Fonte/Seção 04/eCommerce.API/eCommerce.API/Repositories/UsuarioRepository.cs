@@ -22,7 +22,7 @@ namespace eCommerce.API.Repositories
         {
             //return _connection.Query<Usuario>("SELECT * FROM Usuarios").ToList();
             List<Usuario> usuarios = new List<Usuario>();
-            string sql = "SELECT * FROM Usuarios as U LEFT JOIN Contatos C ON C.UsuarioId = U.Id LEFT JOIN EnderecosEntrega EE ON EE.UsuarioId = U.Id LEFT JOIN UsuariosDepartamentos UD ON UD.UsuarioId = U.Id LEFT JOIN Departamentos D ON UD.DepartamentoId = D.Id";
+            string sql = "SELECT U.*, C.*, EE.*, D.* FROM Usuarios as U LEFT JOIN Contatos C ON C.UsuarioId = U.Id LEFT JOIN EnderecosEntrega EE ON EE.UsuarioId = U.Id LEFT JOIN UsuariosDepartamentos UD ON UD.UsuarioId = U.Id LEFT JOIN Departamentos D ON UD.DepartamentoId = D.Id";
 
             _connection.Query<Usuario, Contato, EnderecoEntrega, Departamento, Usuario>(sql, 
                 (usuario, contato, enderecoEntrega, departamento) => {
