@@ -60,13 +60,15 @@ namespace eCommerce.API.Repositories
         public Usuario Get(int id)
         {
             List<Usuario> usuarios = new List<Usuario>();
-            string sql = "SELECT * FROM Usuarios as U LEFT JOIN Contatos C ON C.UsuarioId = U.Id LEFT JOIN EnderecosEntrega EE ON EE.UsuarioId = U.Id WHERE U.Id = @Id";
+            string sql = "SELECT U.*, C.*, EE.*, D.* FROM Usuarios as U LEFT JOIN Contatos C ON C.UsuarioId = U.Id LEFT JOIN EnderecosEntrega EE ON EE.UsuarioId = U.Id LEFT JOIN UsuariosDepartamentos UD ON UD.UsuarioId = U.Id LEFT JOIN Departamentos D ON UD.DepartamentoId = D.Id WHERE U.Id = @Id";
 
-            _connection.Query<Usuario, Contato, EnderecoEntrega, Usuario>(sql,
-                (usuario, contato, enderecoEntrega) => {
+            _connection.Query<Usuario, Contato, EnderecoEntrega, Departamento, Usuario>(sql,
+                (usuario, contato, enderecoEntrega, departamento) => {
 
+                    //Verificação do usuário.
                     if (usuarios.SingleOrDefault(a => a.Id == usuario.Id) == null)
                     {
+                        usuario.Departamentos = new List<Departamento>();
                         usuario.EnderecosEntrega = new List<EnderecoEntrega>();
                         usuario.Contato = contato;
                         usuarios.Add(usuario);
@@ -76,7 +78,18 @@ namespace eCommerce.API.Repositories
                         usuario = usuarios.SingleOrDefault(a => a.Id == usuario.Id);
                     }
 
-                    usuario.EnderecosEntrega.Add(enderecoEntrega);
+                    //Verificação do Endereço de Entrega.
+                    if (usuario.EnderecosEntrega.SingleOrDefault(a => a.Id == enderecoEntrega.Id) == null)
+                    {
+                        usuario.EnderecosEntrega.Add(enderecoEntrega);
+                    }
+
+                    //Verificação do Departamento.
+                    if (usuario.Departamentos.SingleOrDefault(a => a.Id == departamento.Id) == null)
+                    {
+                        usuario.Departamentos.Add(departamento);
+                    }
+
                     return usuario;
                 }, new { Id = id });
 
