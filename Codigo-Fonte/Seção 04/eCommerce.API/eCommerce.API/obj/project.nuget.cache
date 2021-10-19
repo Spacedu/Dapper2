@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "WOsEGCjvXuCPawD3BFNgNeAwiIa/eCOzy69VAscX1wE8kXPqikjTM+Zc7ZYPvWb8Ls+kMvw80YhN2NqNoJVmTw==",
+  "dgSpecHash": "rfJkhz09Y7oGuyZx4n7jUkstw/xrJk2JZhEa15FJCOPsX+zeV7KIc4E2M38EM+P96L1U/oVbYklShi9jI/cQmw==",
   "success": true,
   "projectFilePath": "C:\\Dev\\Dapper2\\Codigo-Fonte\\Seção 04\\eCommerce.API\\eCommerce.API\\eCommerce.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Elias\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",
-    "C:\\Users\\Elias\\.nuget\\packages\\dapper.contrib\\2.0.78\\dapper.contrib.2.0.78.nupkg.sha512",
     "C:\\Users\\Elias\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Elias\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Elias\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
