@@ -122,6 +122,15 @@ namespace eCommerce.API.Repositories
                     }
                 }
 
+                if (usuario.Departamentos != null && usuario.Departamentos.Count > 0)
+                {
+                    foreach (var departamento in usuario.Departamentos)
+                    {
+                        string sqlUsuariosDepartamentos = "INSERT INTO UsuariosDepartamentos (UsuarioId, DepartamentoId) VALUES (@UsuarioId, @DepartamentoId)";
+                        _connection.Execute(sqlUsuariosDepartamentos, new { UsuarioId = usuario.Id, DepartamentoId = departamento.Id }, transaction);
+                    }
+                }
+
                 transaction.Commit();
             }
             catch (Exception)
