@@ -34,6 +34,7 @@
       "eCommerce.API/1.0.0": {
         "dependencies": {
           "Dapper": "2.0.90",
+          "Dapper.Contrib": "2.0.78",
           "Swashbuckle.AspNetCore": "5.6.3",
           "System.Data.SqlClient": "4.8.3",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
@@ -336,6 +337,20 @@
         },
         "compile": {
           "lib/net5.0/Dapper.dll": {}
+        }
+      },
+      "Dapper.Contrib/2.0.78": {
+        "dependencies": {
+          "Dapper": "2.0.90"
+        },
+        "runtime": {
+          "lib/net5.0/Dapper.Contrib.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.78.45418"
+          }
+        },
+        "compile": {
+          "lib/net5.0/Dapper.Contrib.dll": {}
         }
       },
       "Microsoft.Extensions.ApiDescription.Server/3.0.0": {},
@@ -2187,6 +2202,13 @@
       "sha512": "sha512-e4YjOLJptnpwHIbP8HxjaYf7So9lhUC43rvvGMEkH4Q4CiVlm4rOxYDo0HyuHlMQKj0U5Ob/nCMm52TUhTaZQg==",
       "path": "dapper/2.0.90",
       "hashPath": "dapper.2.0.90.nupkg.sha512"
+    },
+    "Dapper.Contrib/2.0.78": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sUfDVIf8LlHNiz3MfUFodeyRiemfN1JFkPxYjCxFWlwNPg1iQ49mB+0E89TkywWs4X8fiRWOVDQgtH5FtzK5Kw==",
+      "path": "dapper.contrib/2.0.78",
+      "hashPath": "dapper.contrib.2.0.78.nupkg.sha512"
     },
     "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
       "type": "package",
