@@ -64,3 +64,4 @@ C:\Dev\Dapper2\Codigo-Fonte\Seção 04\eCommerce.API\eCommerce.API\obj\Debug\net
 C:\Dev\Dapper2\Codigo-Fonte\Seção 04\eCommerce.API\eCommerce.API\obj\Debug\net5.0\eCommerce.API.pdb
 C:\Dev\Dapper2\Codigo-Fonte\Seção 04\eCommerce.API\eCommerce.API\obj\Debug\net5.0\eCommerce.API.genruntimeconfig.cache
 C:\Dev\Dapper2\Codigo-Fonte\Seção 04\eCommerce.API\eCommerce.API\bin\Debug\net5.0\Dapper.Contrib.dll
+C:\Dev\Dapper2\Codigo-Fonte\Seção 04\eCommerce.API\eCommerce.API\bin\Debug\net5.0\Dapper.FluentMap.dll

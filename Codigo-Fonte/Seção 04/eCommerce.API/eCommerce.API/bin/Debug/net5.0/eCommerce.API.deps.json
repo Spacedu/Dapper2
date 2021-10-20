@@ -35,6 +35,7 @@
         "dependencies": {
           "Dapper": "2.0.90",
           "Dapper.Contrib": "2.0.78",
+          "Dapper.FluentMap": "2.0.0",
           "Swashbuckle.AspNetCore": "5.6.3",
           "System.Data.SqlClient": "4.8.3",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
@@ -351,6 +352,20 @@
         },
         "compile": {
           "lib/net5.0/Dapper.Contrib.dll": {}
+        }
+      },
+      "Dapper.FluentMap/2.0.0": {
+        "dependencies": {
+          "Dapper": "2.0.90"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Dapper.FluentMap.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Dapper.FluentMap.dll": {}
         }
       },
       "Microsoft.Extensions.ApiDescription.Server/3.0.0": {},
@@ -2209,6 +2224,13 @@
       "sha512": "sha512-sUfDVIf8LlHNiz3MfUFodeyRiemfN1JFkPxYjCxFWlwNPg1iQ49mB+0E89TkywWs4X8fiRWOVDQgtH5FtzK5Kw==",
       "path": "dapper.contrib/2.0.78",
       "hashPath": "dapper.contrib.2.0.78.nupkg.sha512"
+    },
+    "Dapper.FluentMap/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UFSBuYreRQqOQfzSJ2HOnLvBolg5VFfBjS30ohM8DT4Yra/m+bEKAjVTmCBM1VDahWsPSsKqjX5eLR37MB/O+Q==",
+      "path": "dapper.fluentmap/2.0.0",
+      "hashPath": "dapper.fluentmap.2.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
       "type": "package",
