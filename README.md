@@ -1,2 +1,2 @@
-# ADO.NET
- Repositório do curso de ADO.NET
+# Dapper - Segunda edição
+ Repositório do curso de Dapper
